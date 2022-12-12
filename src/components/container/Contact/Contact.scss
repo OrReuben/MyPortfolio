@@ -99,23 +99,20 @@
 
     .btn {
       margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       background: #8c12f0;
       padding: 0.65rem 1rem;
       border-radius: 10px;
       font-size: 0.85rem;
       width: 4.2rem;
-    }
-    button {
-      background: none;
-      color: inherit;
+      color: #fff;
       border: none;
-      padding: 0;
+      padding: 10px;
       font: inherit;
       cursor: pointer;
       outline: inherit;
-      text-decoration: none;
-      color: #fff;
-      text-transform: capitalize;
     }
   }
 }

@@ -154,13 +154,13 @@ const Contact = () => {
                 onChange={(e) => setText(e.target.value)}
               ></textarea>
             </div>
-            <motion.div
+            <motion.button
               whileHover={{ scale: 1.1 }}
               transition={{ duration: 0.3 }}
               className="btn"
             >
-              <button>Send</button>
-            </motion.div>
+              <h5>Send</h5>
+            </motion.button>
           </motion.form>
         </div>
       </div>
