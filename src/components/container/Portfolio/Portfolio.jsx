@@ -65,12 +65,7 @@ const Portfolio = () => {
           return (
             <div className="workImage" key={work.id}>
               <img src={work.img} alt="workImg" />
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileHover={{ opacity: [0, 1] }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="hoverLayer"
-              >
+              <div className="hoverLayer">
                 <motion.a
                   href={
                     work.id === 1
@@ -85,40 +80,42 @@ const Portfolio = () => {
                       ? "https://github.com/OrReuben/MiddleProject"
                       : "https://github.com/OrReuben/SecondProject"
                   }
-                  whileInView={{ scale: [0, 1] }}
+                  whileInView={{ scale: 1 }}
                   whileHover={{ scale: [1, 1.1] }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
                 >
                   <FiGithub />
                 </motion.a>
 
                 <motion.a
-                  href={work.id === 1
-                    ? "https://bidit-shop.netlify.app/"
-                    : work.id === 2
-                    ? "https://chatsite-app.netlify.app/"
-                    : work.id === 3
-                    ? "netflix"
-                    : work.id === 4
-                    ? "https://dimona-citizen.netlify.app/"
-                    : work.id === 5
-                    ? "https://hava-ve-adam.netlify.app/"
-                    : "https://github.com/OrReuben/SecondProject"}
-                  whileInView={{ scale: [0, 1] }}
+                  href={
+                    work.id === 1
+                      ? "https://bidit-shop.netlify.app/"
+                      : work.id === 2
+                      ? "https://chatsite-app.netlify.app/"
+                      : work.id === 3
+                      ? "netflix"
+                      : work.id === 4
+                      ? "https://dimona-citizen.netlify.app/"
+                      : work.id === 5
+                      ? "https://hava-ve-adam.netlify.app/"
+                      : "https://github.com/OrReuben/SecondProject"
+                  }
+                  whileInView={{ scale: 1 }}
                   whileHover={{ scale: [1, 1.1] }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
                 >
                   <FiEye />
                 </motion.a>
                 <motion.a
                   href="#"
-                  whileInView={{ scale: [0, 1] }}
+                  whileInView={{ scale: 1 }}
                   whileHover={{ scale: [1, 1.1] }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
                 >
                   <AiOutlineInfo />
                 </motion.a>
-              </motion.div>
+              </div>
             </div>
           );
         })}
@@ -134,13 +131,15 @@ const Portfolio = () => {
             So let's talk about <br /> <span>your next projects</span>
           </h3>
         </div>
-        <motion.div
-          whileHover={{ scale: 1.1 }}
-          transition={{ duration: 0.3 }}
-          className="talk_right"
-        >
-          <a href="#contact">Contact Me</a>
-        </motion.div>
+        <div className="button_wrapper">
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            transition={{ duration: 0.3 }}
+            className="talk_right"
+          >
+            <a href="#contact">Contact Me</a>
+          </motion.div>
+        </div>
       </motion.div>
     </div>
   );

@@ -149,7 +149,7 @@ const Contact = () => {
             </div>
             <div className="row">
               <textarea
-                placeholder="message"
+                placeholder="Message"
                 name="message"
                 onChange={(e) => setText(e.target.value)}
               ></textarea>
