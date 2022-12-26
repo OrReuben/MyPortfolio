@@ -108,10 +108,13 @@
     color: white;
     cursor: pointer;
     text-decoration: none;
+    position: relative;
 
     .scroll-icon {
       font-size: 25px;
       animation: bounce 0.7s infinite alternate;
+      position: absolute;
+      bottom: 0;
     }
   }
 }
