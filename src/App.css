@@ -1,3 +1,6 @@
+#root > div{
+  overflow: hidden;
+}
 * {
   padding: 0;
   margin: 0;
@@ -8,7 +11,6 @@ body {
   background: #131212;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  overflow-x: hidden;
 }
 img {
   width: 100%;
