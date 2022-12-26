@@ -5,11 +5,13 @@ import { workImages } from "../../../Data";
 import { AiOutlineInfo } from "react-icons/ai";
 import { FiGithub, FiEye } from "react-icons/fi";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const Portfolio = () => {
   const [tab, setTab] = useState({ name: "all" });
   const [works, setWorks] = useState([]);
   const [active, setActive] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (tab.name === "all") {
@@ -54,72 +56,157 @@ const Portfolio = () => {
           );
         })}
       </motion.div>
-      <motion.div
-        initial={{ x: 0, opacity: 0 }}
-        whileInView={{ x: [-250, 0], opacity: 1 }}
-        transition={{ duration: 1 }}
-        exit={{ opacity: 0, y: -50 }}
-        className="workImages"
-      >
-        {works.map((work) => {
-          return (
-            <div className="workImage" key={work.id}>
-              <img src={work.img} alt="workImg" />
-              <div className="hoverLayer">
-                <motion.a
-                  href={
-                    work.id === 1
-                      ? "https://github.com/OrReuben/Shop"
-                      : work.id === 2
-                      ? "https://github.com/OrReuben/ChatApp"
-                      : work.id === 3
-                      ? "netflix"
-                      : work.id === 4
-                      ? "https://github.com/OrReuben/DimonaApp"
-                      : work.id === 5
-                      ? "https://github.com/OrReuben/MiddleProject"
-                      : "https://github.com/OrReuben/SecondProject"
-                  }
-                  whileInView={{ scale: 1 }}
-                  whileHover={{ scale: [1, 1.1] }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                >
-                  <FiGithub />
-                </motion.a>
+      {window.innerWidth <= 600 ? (
+        <div className="workImages">
+          {works.map((work, index) => {
+            return (
+              <motion.div
+                className="workImage"
+                key={work.id}
+                initial={{ x: 0, opacity: 0 }}
+                whileInView={{
+                  x: index % 2 ? [-250, 0] : [250, 0],
+                  opacity: 1,
+                }}
+                transition={{ duration: 1 }}
+                exit={{ opacity: 0, y: -50 }}
+              >
+                <img src={work.img} alt="workImg" />
+                {work.id === 6 || work.id === 5 ? (
+                  <div className="hoverLayer"> COMING SOON </div>
+                ) : (
+                  <div className="hoverLayer">
+                    <motion.a
+                      href={
+                        work.id === 1
+                          ? work.links.github
+                          : work.id === 2
+                          ? work.links.github
+                          : work.id === 3
+                          ? work.links.github
+                          : work.id === 4
+                          ? work.links.github
+                          : work.id === 5
+                          ? work.links.github
+                          : work.links.github
+                      }
+                      whileInView={{ scale: 1 }}
+                      whileHover={{ scale: [1, 1.1] }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                    >
+                      <FiGithub />
+                    </motion.a>
 
-                <motion.a
-                  href={
-                    work.id === 1
-                      ? "https://bidit-shop.netlify.app/"
-                      : work.id === 2
-                      ? "https://chatsite-app.netlify.app/"
-                      : work.id === 3
-                      ? "netflix"
-                      : work.id === 4
-                      ? "https://dimona-citizen.netlify.app/"
-                      : work.id === 5
-                      ? "https://hava-ve-adam.netlify.app/"
-                      : "https://github.com/OrReuben/SecondProject"
-                  }
-                  whileInView={{ scale: 1 }}
-                  whileHover={{ scale: [1, 1.1] }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                >
-                  <FiEye />
-                </motion.a>
-                <motion.a
-                  href="#"
-                  whileInView={{ scale: 1 }}
-                  whileHover={{ scale: [1, 1.1] }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                >
-                  <AiOutlineInfo />
-                </motion.a>
+                    <motion.a
+                      href={
+                        work.id === 1
+                          ? work.links.demo
+                          : work.id === 2
+                          ? work.links.demo
+                          : work.id === 3
+                          ? work.links.demo
+                          : work.id === 4
+                          ? work.links.demo
+                          : work.id === 5
+                          ? work.links.demo
+                          : work.links.demo
+                      }
+                      whileInView={{ scale: 1 }}
+                      whileHover={{ scale: [1, 1.1] }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                    >
+                      <FiEye />
+                    </motion.a>
+                    <motion.a
+                      onClick={() =>
+                        navigate("project-info", { state: { work: work } })
+                      }
+                      whileInView={{ scale: 1 }}
+                      whileHover={{ scale: [1, 1.1] }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                    >
+                      <AiOutlineInfo />
+                    </motion.a>
+                  </div>
+                )}
+              </motion.div>
+            );
+          })}
+        </div>
+      ) : (
+        <motion.div
+          initial={{ x: 0, opacity: 0 }}
+          whileInView={{ x: [-250, 0], opacity: 1 }}
+          transition={{ duration: 1 }}
+          exit={{ opacity: 0, y: -50 }}
+          className="workImages"
+        >
+          {works.map((work) => {
+            return (
+              <div className="workImage" key={work.id}>
+                <img src={work.img} alt="workImg" />
+                {work.id === 6 || work.id === 5 ? (
+                  <div className="hoverLayer"> COMING SOON </div>
+                ) : (
+                  <div className="hoverLayer">
+                    <motion.a
+                      href={
+                        work.id === 1
+                          ? work.links.github
+                          : work.id === 2
+                          ? work.links.github
+                          : work.id === 3
+                          ? work.links.github
+                          : work.id === 4
+                          ? work.links.github
+                          : work.id === 5
+                          ? work.links.github
+                          : work.links.github
+                      }
+                      whileInView={{ scale: 1 }}
+                      whileHover={{ scale: [1, 1.1] }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                    >
+                      <FiGithub />
+                    </motion.a>
+
+                    <motion.a
+                      href={
+                        work.id === 1
+                          ? work.links.demo
+                          : work.id === 2
+                          ? work.links.demo
+                          : work.id === 3
+                          ? work.links.demo
+                          : work.id === 4
+                          ? work.links.demo
+                          : work.id === 5
+                          ? work.links.demo
+                          : work.links.demo
+                      }
+                      whileInView={{ scale: 1 }}
+                      whileHover={{ scale: [1, 1.1] }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                    >
+                      <FiEye />
+                    </motion.a>
+                    <motion.a
+                      onClick={() =>
+                        navigate("project-info", { state: { work: work } })
+                      }
+                      whileInView={{ scale: 1 }}
+                      whileHover={{ scale: [1, 1.1] }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                    >
+                      <AiOutlineInfo />
+                    </motion.a>
+                  </div>
+                )}
               </div>
-            </div>
-          );
-        })}
-      </motion.div>
+            );
+          })}
+        </motion.div>
+      )}
       <motion.div
         initial={{ x: 0, opacity: 0 }}
         whileInView={{ x: [250, 0], opacity: 1 }}
